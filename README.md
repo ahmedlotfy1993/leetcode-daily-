@@ -17,8 +17,6 @@ I'm solving at least **one LeetCode problem per day** and pushing the solution h
 
 ## 📁 Repository Organization
 
-## 📁 Repository Organization
-
 The repository is structured **by year → month → problem file**.
 
 ### File Naming Format:
