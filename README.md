@@ -27,4 +27,4 @@ Each problem is saved based on the **year and month of solving**, and the file n
 - `<month>`: Month name with optional numbering (e.g. `08-Aug`)
 - `<date>`: Full date of solving (e.g. `2025-08-09`)
 - `<problem-title>`: Short, lowercase version of the problem name with dashes
-- `<language_extension>`: File extension (e.g. `.cpp`, `.py`, `.java`)
+- `<language_extension>`: File extension (`.cpp`)
