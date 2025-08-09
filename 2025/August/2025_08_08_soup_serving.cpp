@@ -5,7 +5,7 @@
     If A > 0 and B ≤ 0: return 0 (B empty first)
 */
 #define USING_RECURSION
-#ifdef USING_NESTED_UNDORDERED_MAP
+#ifdef USING_RECURSION
 class Solution {
   double func(int a, int b){
           if(a <= 0 && b > 0)return 1;
@@ -45,8 +45,8 @@ public:
     }
 };
 #endif
-#define USING_UNORDERED_MAP_WITHPAIR_KEY
-#if USING_UNORDERED_MAP_WITHPAIR_KEY
+#define USING_UNORDERED_MAP_WITH_PAIR_AS_KEY
+#if USING_UNORDERED_MAP_WITH_PAIR_AS_KEY
 class Solution {
         struct pair_hash{
             size_t operator()(const pair<int,int>& p) const{
