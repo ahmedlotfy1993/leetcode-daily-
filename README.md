@@ -1,5 +1,5 @@
-![LeetCode Stats](https://leetcode-stats.vercel.app/api/ahmedlotfy93?theme=dark)
 # 🧠 LeetCode Daily Challenge Solutions
+[![LeetCode Stats](https://leetcode-stats.vercel.app/api/ahmedlotfy93?theme=dark)](https://leetcode.com/ahmedlotfy93/)
 
 Hi! 👋 I'm Ahmed and this is my collection of daily LeetCode problems solved in C++.
 
