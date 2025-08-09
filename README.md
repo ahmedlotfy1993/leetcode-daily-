@@ -1,3 +1,4 @@
+![LeetCode Stats](https://leetcode-stats.vercel.app/api/<ahmedlotfy93>?theme=dark)
 # 🧠 LeetCode Daily Challenge Solutions
 
 Hi! 👋 I'm Ahmed and this is my collection of daily LeetCode problems solved in C++.
