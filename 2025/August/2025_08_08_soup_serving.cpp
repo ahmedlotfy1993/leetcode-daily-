@@ -5,6 +5,7 @@
     If A > 0 and B ≤ 0: return 0 (B empty first)
 */
 #define USING_RECURSION
+#ifdef USING_NESTED_UNDORDERED_MAP
 class Solution {
   double func(int a, int b){
           if(a <= 0 && b > 0)return 1;
@@ -17,6 +18,7 @@ public:
     return func(n);
   }
 };
+#endif
 #define USING_NESTED_UNDORDERED_MAP
 #ifdef USING_NESTED_UNDORDERED_MAP
 class Solution {
