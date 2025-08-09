@@ -17,11 +17,11 @@ I'm solving at least **one LeetCode problem per day** and pushing the solution h
 
 ## 📁 Repository Organization
 
-Each problem is saved based on the **year and month of solving**, and the file name includes:
-- The date of submission
-- A simplified version of the problem name
+## 📁 Repository Organization
 
-### Folder/File Naming Format:
+The repository is structured **by year → month → problem file**.
+
+### File Naming Format:
 
 - `<year>`: Year of solving the problem (e.g. `2025`)
 - `<month>`: Month name with optional numbering (e.g. `08-Aug`)
