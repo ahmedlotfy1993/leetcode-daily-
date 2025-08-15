@@ -1,7 +1,7 @@
 # 🧠 LeetCode Daily Challenge Solutions
 [![LeetCode account](https://leetcode-stats.vercel.app/api/ahmedlotfy93?theme=dark)](https://leetcode.com/ahmedlotfy93/)
 
-Hi! 👋 I'm Ahmed and this is my collection of daily LeetCode problems solved in C++.
+Hi! 👋 this is my collection of daily LeetCode problems solved in C++.
 
 This repository helps me stay consistent with algorithm practice, sharpen my data structure skills, and keep track of my progress.
 
