@@ -25,5 +25,5 @@ The repository is structured **by year → month → problem file**.
 - `<year>`: Year of solving the problem (e.g. `2025`)
 - `<month>`: Month name with optional numbering (e.g. `08-Aug`)
 - `<date>`: Full date of solving (e.g. `2025-08-09`)
-- `<problem-title>`: Short, lowercase version of the problem name with dashes
+- `<problem_title>`: Short, lowercase version of the problem name with underscore
 - `<language_extension>`: File extension (`.cpp`)
