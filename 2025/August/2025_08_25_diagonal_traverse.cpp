@@ -20,7 +20,7 @@ mat = [
 Output: [1,2,4,7,5,3,6,8,9]
 */
 /*
-Approach:
+Approach zigzag diagnoal trversal:
 ---------
 1. Initialize the current position at (0, 0).
 2. Use a boolean flag `isUpwardDiagonal` to alternate between the two directions:
@@ -40,6 +40,8 @@ Time & Space Complexity:
 - Time: O(m * n), where m is the number of rows and n is the number of columns.
 - Space: O(1) extra (excluding output vector).
 */
+#define ZIGZAG_DIRECTIONAL_TRAVERSAL
+#ifdef ZIGZAG_DIRECTIONAL_TRAVERSAL 
 class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
@@ -85,3 +87,44 @@ public:
         return result;
 
     }
+#endif 
+/*
+Approach diagonal grouping:
+---------
+
+1. We observe that all elements lying on the same diagonal (from top-left to bottom-right) 
+   share the same sum of their indices (i + j).
+2. Create a vector of vectors (`diagonals`) where index `i + j` holds all elements from that diagonal.
+3. Traverse the matrix and fill the `diagonals` vector based on index sum.
+4. To simulate the zigzag pattern:
+   - Reverse every even-indexed diagonal group to match the "upward" direction.
+   - Keep odd-indexed diagonal groups as is to match the "downward" direction.
+5. Concatenate all diagonals in order to produce the final result.
+
+Time Complexity: O(m * n) — each element is visited once and inserted into the result.
+Space Complexity: O(m * n) — extra space used for the diagonals structure.
+*/
+#define DIAGONAL_GROUPING
+#ifdef DIAGONAL_GROUPING
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
+        int m = mat.size();
+        int n = mat[0].size();
+        vector<vector<int>> diagonals(m + n - 1);
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                diagonals[i + j].push_back(mat[i][j]);
+            }
+        }
+        vector<int> result;
+        for (int k = 0; k < diagonals.size(); ++k) {
+            if (k % 2 == 0) {
+                reverse(diagonals[k].begin(), diagonals[k].end());
+            }
+            result.insert(result.end(), diagonals[k].begin(), diagonals[k].end());
+        }
+        return result;
+    }
+};
+#endif
