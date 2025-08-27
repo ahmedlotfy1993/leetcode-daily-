@@ -154,7 +154,7 @@ Complexity:
 - Time Complexity: O(n * m * 4 * 2) → O(n*m).
 - Space Complexity: O(n * m * 4 * 2) for memoization table + recursion stack.
 */
-#ddefine USING_DFS_WITH_MEMORIZATION
+#define USING_DFS_WITH_MEMORIZATION
 #ifdef USING_DFS_WITH_MEMORIZATION
 
 class Solution {
