@@ -114,3 +114,84 @@ public:
     }
 };
 #endif
+/*
+Approach:
+---------
+1. **DFS Traversal**:
+   - Starting from every cell that contains `1` (the required starting value),
+     explore all 4 possible diagonal directions.
+   - At each step, check the next diagonal cell:
+     - If it matches the expected value in the sequence (2 → 0 → 2 → 0 → ...),
+       continue the DFS.
+   - The sequence alternates between `2` and `0`, so we pass the next expected
+     value recursively (`target = 2 - target`).
+
+2. **Turn Handling**:
+   - Each path is allowed **at most one clockwise 90° turn**.
+   - The DFS carries a boolean flag `turn` that indicates whether a turn is still available.
+   - If `turn == true`, we can either:
+     - Continue in the same diagonal direction, OR
+     - Try turning clockwise once and continue DFS in the new direction.
+   - After using the turn, `turn` becomes `false`.
+
+3. **Memoization (DP table)**:
+   - To avoid recomputation, results are cached in a 4D DP table:
+     `dp[row][col][direction][turnUsed]`
+   - This stores the longest possible segment length starting from `(row, col)`
+     when moving in `direction` with/without turn available.
+   - DP ensures each state is solved once, improving efficiency.
+
+4. **Result Computation**:
+   - For each starting cell with value `1`, run DFS in all 4 directions
+     with the turn initially available (`turn = true`).
+   - Add 1 for the starting cell.
+   - Track the maximum length across all possible paths.
+
+Complexity:
+-----------
+- Let n = rows, m = cols.
+- Each state `(row, col, direction, turn)` is visited at most once.
+- Time Complexity: O(n * m * 4 * 2) → O(n*m).
+- Space Complexity: O(n * m * 4 * 2) for memoization table + recursion stack.
+*/
+#ddefine USING_DFS_WITH_MEMORIZATION
+#ifdef USING_DFS_WITH_MEMORIZATION
+
+class Solution {
+public:
+    int lenOfVDiagonal(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        int dirs[4][2] = {{1, 1}, {1, -1}, {-1, -1}, {-1, 1}};
+        vector<vector<vector<vector<int>>>> dp(m, vector<vector<vector<int>>>(n, vector<vector<int>>(4, vector<int>(2, -1))));
+
+        function<int(int, int, int, bool, int)> dfs =
+            [&](int cx, int cy, int direction, bool turn, int target) -> int {
+            int nx = cx + dirs[direction][0];
+            int ny = cy + dirs[direction][1];
+
+            if (nx < 0 || ny < 0 || nx >= m || ny >= n || grid[nx][ny] != target) return 0;
+
+            if (dp[nx][ny][direction][turn] != -1) return dp[nx][ny][direction][turn];
+
+            int maxStep = dfs(nx, ny, direction, turn, 2 - target);
+            if (turn) maxStep = max(maxStep, dfs(nx, ny, (direction + 1) % 4, false, 2 - target));
+
+            dp[nx][ny][direction][turn] = maxStep + 1;
+            return maxStep + 1;
+        };
+
+        int res = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 1) {
+                    for (int direction = 0; direction < 4; ++direction) {
+                        res = max(res, dfs(i, j, direction, true, 2) + 1);
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+};
+#endif
