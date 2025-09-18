@@ -45,12 +45,6 @@
 #define USE_INLINE_LAMBDA_COMPARATOR 1
 #define USE_FOOD_INFO_MAP 1
 
-struct FoodComparator {
-    bool operator()(const pair<int, string>& a, const pair<int, string>& b) const {
-        return a.first != b.first ? a.first > b.first : a.second < b.second;
-    }
-};
-
 class FoodRatings {
 #if USE_INLINE_LAMBDA_COMPARATOR
     inline static auto food_comp = [](const pair<int, string>&f1, const pair<int, string>& f2) {
@@ -59,6 +53,11 @@ class FoodRatings {
     using FoodSet = set<pair<int, string>, decltype(food_comp)>;
     unordered_map<string, FoodSet> cuisine_to_foods;
 #else
+    struct FoodComparator {
+      bool operator()(const pair<int, string>& a, const pair<int, string>& b) const {
+        return a.first != b.first ? a.first > b.first : a.second < b.second;
+      }
+    };
     using FoodSet = set<pair<int, string>, FoodComparator>;
     unordered_map<string, FoodSet> cuisine_to_foods;
 #endif
